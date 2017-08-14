@@ -1,6 +1,6 @@
 (function ($) {
     var zjyobj = {
-       uploadDomain : 'XXXXXXX',//上传的服务器的url       
+       uploadDomain : 'http://file.51educloud.com',       
        upload : function(callback, fileId, complete) {   
 			var formData = new FormData();
 			formData.append("file",$("#" + fileId)[0].files[0]);								
@@ -23,14 +23,14 @@
 			};
 			
 			$.ajax({
-				url : this.uploadDomain+'/zjyfile/upload',
+				url : $.zjy.uploadDomain + '/zjyfile/upload',
 				type : 'POST',
 				data : formData,
 				processData : false,
 				contentType : false,
 				xhr : xhr_provider, 
 				success : function(res) {
-					console.log(res);
+					res.returnObj = $.zjy.uploadDomain + '/files/' + res.returnObj;
 					complete(res);
 				},
 				error : function(res) {

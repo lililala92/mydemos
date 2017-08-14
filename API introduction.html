@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API introduction</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		h1{
+			margin: 5px 0;
+		    padding: 10px;
+		    background: #7BC0F4;
+		    border-left: 5px solid #146BBB;
+		    color: #333;
+		    font-weight: 700;
+		    font-size: 16px;
+		    font-family: Bitter,Cambria,Georgia,serif;
+		}
+		h2{		
+	    margin: 5px 0 5px 5px;
+	    padding: 5px;
+	    background: #F5BDB3;
+	    border-left: 4px solid #ED4D1E;
+	    color: #333;
+	    font-size: 14px;
+	    width: 50%;
+       }
+       p{
+    	padding-left: 30px;
+        }
+        .code{
+		border: none;
+	    padding: 16px;
+	    overflow: auto;    
+	    line-height: 1.45;
+	    background-color: #f6f8fa;
+	    border-radius: 3px;
+	    font: 16px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	}
+	</style>
+</head>
+<body>
+   <h1>$.zjy.upload(fn1, id, fn2)</h1>
+   <h2>参数</h2>
+   <p>
+   	  <p><span>fn1：</span><span>必需，该参数是上传过程中所执行的函数名称，带一个参数返回上传进度百分比值</span></p>
+   	  <p><span>id：</span><span>必需，是需要定义的用来上传文件的input标签的id值，为字符串类型</span><br></p>
+   	  <p><span>fn2：</span><span>必需，该参数是上传完成后所执行的函数名称，带一个参数返回上传完成情况</span><br></p>
+   </p>
+   <h2>示例</h2>
+   <p>
+   	  <TEXTAREA class="code" rows=10 cols=90 readonly="readonly">
+			var showProgress = function(perccent) {
+			     console.log('currentPerccent:' + perccent);
+			};
+			var complete = function(res) {
+				console.log(res);
+			}
+			$("#upload").click(function() {
+				$.zjy.upload(showProgress, "file", complete);
+			});
+        </TEXTAREA> 
+   </p>
+</body>
+</html>

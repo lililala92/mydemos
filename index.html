@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>test</title>
+<style type="text/css">
+	.code{
+		border: none;
+	    padding: 16px;
+	    overflow: auto;    
+	    line-height: 1.45;
+	    background-color: #f6f8fa;
+	    border-radius: 3px;
+	    font: 16px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	}
+	h2{		
+	    margin: 5px 0 5px 5px;
+	    padding: 5px;
+	    background: #F5BDB3;
+	    border-left: 4px solid #ED4D1E;
+	    color: #333;
+	    font-size: 14px;
+	    width: 60%;
+    }
+
+    p{
+    	padding-left: 50px;
+    }
+    a{
+    	 text-decoration: none;
+         color: #66d231;;
+    }
+</style>
+</head>
+<body>	
+	<h2>概述</h2>
+	<p>zjy-upload.js是一个将文件上传至XX服务器，并返回上传进度供进度条使用的插件。<a href="demo.html">点击查看demo</a></p>
+	<h2>使用文档</h2>
+	<p>
+		1.第一步引入本插件的js文件,需要和jQuery一起引用。<br/>
+		<TEXTAREA class="code" rows=3 cols=70 readonly="readonly">
+<script type="text/javascript" src="js/lib/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="js/lib/zjy-upload.js"></script>
+        </TEXTAREA>        
+	</p>
+	<p>
+		2.定义一个form表单，form表单action属性设置为“/user/upload”，form表单里面定义一个type="file"的input标签。举例如下<br/>
+		<TEXTAREA class="code" rows=6 cols=70 readonly="readonly">
+<form id="showDataForm" action="/user/upload" method="POST"
+	enctype="multipart/form-data">
+	文件：<input id="file" type="file" name="test" />
+	<button id="upload" type="button">upload</button>
+</form>
+        </TEXTAREA> 
+	</p>
+	<p>
+		2.在上传文件的点击事件中调用<a href="API introduction.html">$.zjy.upload(fn1, id, fn2)方法(可点击查看该方法详情)</a><br/>
+		<TEXTAREA class="code" rows=10 cols=70 readonly="readonly">
+	var showProgress = function(perccent) {
+        console.log('currentPerccent:' + perccent);
+	};
+	var complete = function(res) {
+		console.log(res);
+	}
+	$("#upload").click(function() {
+		$.zjy.upload(showProgress, "file", complete);
+	});
+        </TEXTAREA> 
+	</p>
+</body>
+</html>
